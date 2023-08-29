@@ -1,0 +1,42 @@
+schema {
+  query: Query
+}
+
+directive @grpcMethod(rootJsonName: String, objPath: String, methodName: String, responseStream: Boolean) on FIELD_DEFINITION
+
+directive @grpcConnectivityState(rootJsonName: String, objPath: String) on FIELD_DEFINITION
+
+directive @grpcRootJson(name: String, rootJson: ObjMap, loadOptions: ObjMap) repeatable on OBJECT
+
+"Directs the executor to stream plural fields when the `if` argument is true or undefined."
+directive @stream(
+  """Stream when true or undefined."""
+  if: Boolean! = true
+  """Unique name"""
+  label: String
+  """Number of items to return immediately"""
+  initialCount: Int = 0
+) on FIELD
+
+type Query @grpcRootJson(name: "Root0", rootJson: "{\"nested\":{\"GreetingRequest\":{\"fields\":{\"name\":{\"type\":\"string\",\"id\":1}},\"comment\":null},\"GreetingResult\":{\"fields\":{\"greeting\":{\"type\":\"string\",\"id\":1}},\"comment\":null},\"GreetingService\":{\"methods\":{\"GetGreeting\":{\"requestType\":\".GreetingRequest\",\"responseType\":\".GreetingResult\"}},\"comment\":null}}}") {
+  GreetingService_GetGreeting(input: GreetingRequest_Input): GreetingResult @grpcMethod(rootJsonName: "Root0", objPath: "GreetingService", methodName: "GetGreeting", responseStream: false)
+  GreetingService_connectivityState(tryToConnect: Boolean): ConnectivityState @grpcConnectivityState(rootJsonName: "Root0", objPath: "GreetingService")
+}
+
+type GreetingResult {
+  greeting: String
+}
+
+input GreetingRequest_Input {
+  name: String
+}
+
+enum ConnectivityState {
+  IDLE
+  CONNECTING
+  READY
+  TRANSIENT_FAILURE
+  SHUTDOWN
+}
+
+scalar ObjMap
