@@ -3,3 +3,9 @@ sources:
     handler:
       grpc:
         endpoint: localhost:50051
+        metaData:
+          token: "{context.headers['some_auth_token']}"
+    transforms:
+      - prefix:
+          value: TEST_
+          includeRootOperations: true

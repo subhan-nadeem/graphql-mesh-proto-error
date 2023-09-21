@@ -13,6 +13,9 @@ export default async function startServer() {
   const grpcObject = loadPackageDefinition(packageDefinition);
   // @ts-ignore
   server.addService(grpcObject.TestService.service, {
+    get(call, callback) {
+      callback(null, { });
+    },
   });
   return new Promise<Server>((resolve, reject) => {
     server.bindAsync('0.0.0.0:50051', ServerCredentials.createInsecure(), (error, port) => {

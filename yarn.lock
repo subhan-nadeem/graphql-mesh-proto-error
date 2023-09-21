@@ -843,6 +843,15 @@
     lower-case "^2.0.2"
     upper-case "^2.0.2"
 
+"@graphql-mesh/transform-prefix@^0.95.4":
+  version "0.95.4"
+  resolved "https://artifactory.teslamotors.com/artifactory/api/npm/digital-products-node/@graphql-mesh/transform-prefix/-/transform-prefix-0.95.4.tgz#90ccef9b2a06c567488122f5d5196625cf491478"
+  integrity sha512-JEIvj+sQzbrGyvcqpWkTHhEq1yiwWL3WGbYsW1rkg6Gfh2yOlVAt+czJkDGM+v1FwN2MH6KitbWJLo6nn2wYcQ==
+  dependencies:
+    "@graphql-tools/delegate" "^10.0.0"
+    "@graphql-tools/wrap" "^10.0.0"
+    graphql-scalars "^1.22.2"
+
 "@graphql-mesh/types@^0.95.2":
   version "0.95.2"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/types/-/types-0.95.2.tgz#83baff89898239b05f90db59276d6afbe754afe7"
